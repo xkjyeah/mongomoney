@@ -1,0 +1,16 @@
+<body><script id="journal-line" type="text/x-template">
+<tr>
+    <td>
+        <account-selector v-model="line.account" :has_blank="true"></account-selector>
+    </td>
+    <td>
+        <input type="text" name="debit_amt"
+                    :value="line.type === 'debit' ? line.amount : ''" />
+    </td>
+    <td>
+        <input type="text" name="credit_amt"
+                    :value="line.type === 'credit' ? line.amount : ''" />
+    </td>
+    <td><input type="text" v-model="line.description" /></td>
+</tr>
+</script></body>

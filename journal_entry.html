@@ -1,0 +1,28 @@
+<body><script id="journal-entry" type="text/x-template">
+<form class="journal_entry">
+    <h1>Journal Entry</h1>
+
+    <input type="text" name="date" v-model="journal_entry.date" />
+    <input type="hidden" name="_id" v-model="journal_entry._id" />
+
+    <hr/>
+
+    <table id="journal_entry_table">
+        <tr>
+            <th>Account</th>
+            <th>Debit</th>
+            <th>Credit</th>
+            <th>Description</th>
+        </tr>
+        <tr is='journal-line' v-for="line in journal_entry.journal.lines"
+            track-by="$index"
+            v-bind:line="line"></tr>
+    </table>
+
+    <button type="button" class="add_line" @click="addLine">Add Line</button>
+    <br/>
+    <button class="submit" @click="submit">Submit</button>
+    <button type=reset>Reset</button>
+</form>
+
+</script></body>

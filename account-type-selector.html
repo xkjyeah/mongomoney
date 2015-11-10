@@ -1,0 +1,12 @@
+<body><script id="account-type-selector" type="text/x-template">
+<select :name="name" v-model="data"
+    @change='updateModel'
+    >
+    <option v-if="has-blank" value=""></option>
+    <option value="0">Liability</option>
+    <option value="1">Asset</option>
+    <option value="2">Income</option>
+    <option value="3">Expense</option>
+</select>
+
+</script></body>

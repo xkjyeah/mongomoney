@@ -1,0 +1,23 @@
+<body><script id="account-entry" type="text/x-template">
+<form class="form-entry">
+    <h2>Create New Account</h2>
+    <p>
+    Name:
+    <input type="text" placeholder="Account Name" v-model="account.name" />
+    <input type="hidden" value="[[account._id]]" />
+    </p>
+
+    <p>
+    Account Type:
+    <account-type-selector v-model="account.type"></account-type-selector>
+    </p>
+
+    <p>
+    Parent Account:
+    <account-selector :has-blank="true" v-model="account.parent"></account-selector>
+    </p>
+
+    <button class="add" @click="addAccount">Add</button>
+    <button type="reset">Clear</button>
+</form>
+</script></body>

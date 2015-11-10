@@ -1,0 +1,14 @@
+<body><script id="account-history-line" type="text/x-template">
+<tr class="[[line.type]]" v-for="line in entry.journal.lines">
+
+    <td rowspan="[[entry.journal.lines.length]]"
+            v-if="$index == 0">[[entry.date]]
+    </td>
+
+    <td>[[line.account]]</td>
+    <td>[[line.type == 'debit' ? line.amount : '']]</td>
+    <td>[[line.type == 'credit' ? line.amount : '']]</td>
+    <td>[[line.balance]]</td>
+</tr>
+
+</script></body>

@@ -1,0 +1,23 @@
+<body><script id="account-history" type="text/x-template">
+<section>
+<h1>Account History for [[account.name]]</h1>
+
+<a v-link="{path:'/journal-entry'}">New journal entry</a>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Account</th>
+        <th>Debits</th>
+        <th>Credits</th>
+        <th>Balance</th>
+    </tr>
+    <tr v-for="entry in transactions"
+        is="account-history-line"
+        :entry="entry">
+    </tr>
+    </template>
+</table> <button @click="check">X</button>
+</section>
+
+</script></body>

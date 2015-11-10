@@ -1,0 +1,23 @@
+<body><script id="subaccounts" type="text/x-template">
+<div class="subaccount">
+    <div class="field account_name">
+        <a v-link="{
+                name:'account-history',
+                params: {docId: model._id},}">
+                [[model.name]]
+        </a>
+    </div>
+    <div class="field type">
+        [[model.type]]
+    </div>
+    <div class="field balance">
+        [[model.balance]]
+    </div>
+    <div class="field delete">
+        <button class="delete"
+            @click="removeAccount(model._id)"
+            >Delete</button>
+    </div>
+</div>
+
+</script></body>

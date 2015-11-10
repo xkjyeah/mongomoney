@@ -1,0 +1,9 @@
+<body><script id="account-selector" type="text/x-template">
+<select @change="updateModel" v-model="data" :name="name">
+    <option v-if="hasBlank" value=""></option>
+    <option v-for="acc in accounts_list"
+            :value="acc._id"
+            track-by="_id"
+        >[[acc.name]]</option>
+</select>
+</script></body>

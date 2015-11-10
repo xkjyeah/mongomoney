@@ -1,17 +1,16 @@
-<template name="base">
-<head>
 
+<head>
 </head>
 
 <body>
-
+<div id="app">
 <nav>
-    <a href="/chart_of_accounts">Chart of Accounts</a>
+    <a v-link="{name: 'chart-of-accounts'}">Chart of Accounts</a>
 </nav>
 
 <main>
-{{>yield}}
+<router-view></router-view>
 </main>
-
+</div>
 </body>
-</template>
+

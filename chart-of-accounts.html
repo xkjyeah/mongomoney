@@ -1,0 +1,14 @@
+<body><script id="chart-of-accounts" type="text/x-template">
+<section>
+<h1>Chart of Accounts</h1>
+
+<subaccounts :model="acc"
+    v-for="acc in accounts"
+    track-by="_id">
+</subaccounts>
+
+<hr/>
+<account-entry></account-entry>
+
+</section>
+</script></body>
