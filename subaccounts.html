@@ -1,23 +1,30 @@
 <body><script id="subaccounts" type="text/x-template">
-<div class="subaccount">
-    <div class="field account_name">
+<tr class="subaccount">
+    <td class="field account_name"
+        v-bind:style="{paddingLeft: (indent || 0) * 1 + 'em' }">
         <a v-link="{
                 name:'account-history',
                 params: {docId: model._id},}">
                 [[model.name]]
         </a>
-    </div>
-    <div class="field type">
-        [[model.type]]
-    </div>
-    <div class="field balance">
+    </td>
+    <td class="field type">
+        [[model.type | getAccountType | get 'name' ]]
+    </td>
+    <td class="field balance">
         [[model.balance]]
-    </div>
-    <div class="field delete">
+    </td>
+    <td class="field delete">
         <button class="delete"
             @click="removeAccount(model._id)"
             >Delete</button>
-    </div>
-</div>
+    </td>
+</tr>
+<tr v-if="model.subaccounts && model.subaccounts.length > 0"
+    is="subaccounts"
+    v-for="acc in model.subaccounts"
+            :model="acc"
+            :indent="(indent || 0) + 1">
+</tr>
 
 </script></body>

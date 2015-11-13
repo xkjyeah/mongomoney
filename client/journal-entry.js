@@ -1,5 +1,5 @@
 
-var JournalLine = Vue.component('journal-line',
+var JournalLine = MMVue.component('journal-line',
                 loadTemplate('journal-line', {
                     props: ['line'],
                     ready: function () {
@@ -25,7 +25,7 @@ var JournalLine = Vue.component('journal-line',
                 },
             }));
 
-JournalEntry = Vue.component('journal-entry', loadTemplate('journal-entry', {
+JournalEntry = MMVue.component('journal-entry', loadTemplate('journal-entry', {
     sync: {
         journal_entry: function() {
             if (this.$route.params.docId) {
@@ -36,7 +36,7 @@ JournalEntry = Vue.component('journal-entry', loadTemplate('journal-entry', {
             }
             // dummy sync variable
             return {
-                date: '',
+                date: new Date().toISOString().substr(0,10),
                 journal: {
                     lines: [],
                 },
@@ -50,6 +50,7 @@ JournalEntry = Vue.component('journal-entry', loadTemplate('journal-entry', {
             if (this.$get('journal_entry.journal.lines') === undefined) {
                 this.$set('journal_entry.journal.lines', []);
             }
+            this.journal_entry.journal.lines.push({});
         },
         submit: function (e) {
             var self = this;
@@ -69,6 +70,9 @@ JournalEntry = Vue.component('journal-entry', loadTemplate('journal-entry', {
             vuedata.journal.lines = vuedata.journal.lines.filter(function (l) {
                 return (l.type === 'credit' || l.type === 'debit') &&
                     (isFinite(parseFloat(l.amount)));
+            });
+            vuedata.journal.lines.forEach(function (l) {
+                l.amount = parseFloat(l.amount);
             });
 
             if (this.$route.params.docId) {

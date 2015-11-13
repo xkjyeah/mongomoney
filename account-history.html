@@ -10,13 +10,22 @@
         <th>Account</th>
         <th>Debits</th>
         <th>Credits</th>
-        <th>Balance</th>
+        <th>Balance Debits</th>
+        <th>Balance Credits</th>
     </tr>
     <tr v-for="entry in transactions"
         is="account-history-line"
         :entry="entry">
     </tr>
-    </template>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Total:</th>
+        <th class="currency">[[sumDebits | fmtCurrency]]</th>
+        <th class="currency">[[sumCredits | fmtCurrency]]</th>
+    </tr>
+
 </table> <button @click="check">X</button>
 </section>
 

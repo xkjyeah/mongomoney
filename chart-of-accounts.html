@@ -2,10 +2,18 @@
 <section>
 <h1>Chart of Accounts</h1>
 
-<subaccounts :model="acc"
+<table>
+<tr>
+    <th>Account</th>
+    <th>Type</th>
+    <th>Balance</th>
+    <th>Actions</th>
+</tr>
+<tr is="subaccounts" :model="acc"
     v-for="acc in accounts"
     track-by="_id">
-</subaccounts>
+</tr>
+</table>
 
 <hr/>
 <account-entry></account-entry>

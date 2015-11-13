@@ -1,5 +1,5 @@
 
-AccountEntryComponent = Vue.component('account-entry', loadTemplate('account-entry', {
+AccountEntryComponent = MMVue.component('account-entry', loadTemplate('account-entry', {
     props: ['model'],
     data: function() {
         return {

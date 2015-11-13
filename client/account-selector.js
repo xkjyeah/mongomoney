@@ -1,5 +1,5 @@
 
-AccountSelector = Vue.component('account-selector', loadTemplate('account-selector', {
+AccountSelector = MMVue.component('account-selector', loadTemplate('account-selector', {
     props:  ['hasBlank', 'name', 'vModel'],
     sync: {
         accounts_list: function () {

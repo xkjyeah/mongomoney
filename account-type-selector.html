@@ -3,10 +3,7 @@
     @change='updateModel'
     >
     <option v-if="has-blank" value=""></option>
-    <option value="0">Liability</option>
-    <option value="1">Asset</option>
-    <option value="2">Income</option>
-    <option value="3">Expense</option>
+    <option value="i" v-for="i in 5">[[ i | getAccountType | get 'name']]</option>
 </select>
 
 </script></body>

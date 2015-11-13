@@ -2,13 +2,28 @@
 <tr class="[[line.type]]" v-for="line in entry.journal.lines">
 
     <td rowspan="[[entry.journal.lines.length]]"
-            v-if="$index == 0">[[entry.date]]
+            v-if="$index == 0">
+            <a v-link="{name: 'journal-entry', params: { docId: entry._id } }">[[entry.date]]</a>
     </td>
 
-    <td>[[line.account]]</td>
-    <td>[[line.type == 'debit' ? line.amount : '']]</td>
-    <td>[[line.type == 'credit' ? line.amount : '']]</td>
-    <td>[[line.balance]]</td>
+    <td>
+        <a v-link="{name: 'account-history', params: {docId: line.account}}">
+            [[line.account | getAccount | get 'name']]
+        </a>
+    </td>
+    <td class="currency">[[(line.type == 'debit' ? line.amount : '') | fmtCurrency]]</td>
+    <td class="currency">[[(line.type == 'credit' ? line.amount : '') | fmtCurrency]]</td>
+
+    <td rowspan="[[entry.journal.lines.length]]"
+            v-if="$index == 0"
+            class="currency">
+        [[ entry.balanceDebits | fmtCurrency ]]
+    </td>
+    <td rowspan="[[entry.journal.lines.length]]"
+            v-if="$index == 0"
+            class="currency">
+        [[ entry.balanceCredits | fmtCurrency ]]
+    </td>
 </tr>
 
 </script></body>
